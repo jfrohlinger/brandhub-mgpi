@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H7BGSV6XXG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-H7BGSV6XXG');
+</script>
 <script>
 /* brandhub null-safety shim — prevents crashes from removed sections */
 (function(){
@@ -27,7 +36,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>brandhub · MGPI · March 2026</title>
+<title>brandhub · meeting-1 · March 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
@@ -935,24 +944,23 @@ p.sec-sub{font-size:16px;color:var(--muted);max-width:640px;margin-left:auto;mar
 #pgbar{position:fixed;top:0;left:0;width:3px;background:linear-gradient(180deg,var(--blue),var(--orange));height:0;z-index:9999;transition:height .1s linear}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;height:58px;z-index:1000;background:rgba(9,12,28,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 20px}
-.nav-logo-wrap{display:flex;align-items:center}
+nav{position:fixed;top:0;left:0;bottom:0;width:124px;z-index:1000;background:rgba(9,12,28,.96);backdrop-filter:blur(14px);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto;transform:translateX(-100%);transition:transform .3s cubic-bezier(.4,0,.2,1)}
+nav.nav-visible{transform:translateX(0)}
+/* ── NAV TOGGLE BUTTON ── */
+#nav-toggle{position:fixed;top:16px;left:16px;z-index:1100;width:40px;height:40px;border-radius:10px;background:rgba(9,12,28,.92);backdrop-filter:blur(12px);border:1px solid var(--border-s);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;transition:all .2s;box-shadow:0 4px 16px rgba(0,0,0,.4)}
+#nav-toggle:hover{border-color:rgba(48,180,230,.4);background:rgba(14,18,37,.97)}
+#nav-toggle span{display:block;width:18px;height:2px;background:var(--muted);border-radius:2px;transition:all .25s}
+#nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);background:var(--blue)}
+#nav-toggle.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+#nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);background:var(--blue)}
+body.nav-open #nav-toggle{left:132px}
+.nav-logo-wrap{padding:14px 14px 12px;border-bottom:1px solid var(--border);flex-shrink:0}
 .nav-logo{height:18px;width:auto}
-.nav-ham{background:none;border:none;cursor:pointer;padding:8px;color:var(--muted);display:flex;flex-direction:column;gap:5px;z-index:1010;transition:color .15s}
-.nav-ham:hover{color:var(--text)}
-.nav-ham span{display:block;width:22px;height:2px;background:currentColor;border-radius:2px;transition:transform .25s,opacity .2s}
-.nav-ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.nav-ham.open span:nth-child(2){opacity:0}
-.nav-ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.nav-drawer{position:fixed;top:58px;right:0;bottom:0;width:200px;background:rgba(9,12,28,.98);backdrop-filter:blur(16px);border-left:1px solid var(--border);z-index:999;transform:translateX(100%);transition:transform .28s cubic-bezier(.4,0,.2,1)}
-.nav-drawer.open{transform:translateX(0)}
-.nav-overlay{position:fixed;inset:0;top:58px;background:rgba(0,0,0,.45);z-index:998;opacity:0;pointer-events:none;transition:opacity .25s}
-.nav-overlay.open{opacity:1;pointer-events:auto}
-.nav-links{display:flex;flex-direction:column;padding:12px 8px;gap:1px}
-.nav-a{color:var(--muted);font-size:12px;font-weight:600;padding:8px 12px;border-radius:7px;text-decoration:none;transition:color .15s,background .15s;display:block;white-space:nowrap}
+.nav-links{display:flex;flex-direction:column;padding:8px 6px;gap:1px;flex:1}
+.nav-a{color:var(--muted);font-size:11.5px;font-weight:600;padding:6px 10px;border-radius:7px;text-decoration:none;transition:color .15s,background .15s;display:block;white-space:nowrap}
 .nav-a:hover{color:var(--text);background:rgba(255,255,255,0.07)}
 .nav-a.active{color:var(--blue);background:rgba(48,180,230,0.12)}
-.nav-divider{height:1px;background:var(--border);margin:5px 8px}
+.nav-divider{height:1px;background:var(--border);margin:5px 6px}
 
 /* ── FADE-IN ── */
 .fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
@@ -2172,15 +2180,6 @@ input[type=range]::-webkit-slider-thumb{appearance:none;width:20px;height:20px;b
   .eco-center .eco-center-inner div:last-child{ display:none; }
 }
 
-/* ── MGPI nav + hero overrides ── */
-body{padding-top:0!important}
-body.nav-open{padding-left:0!important}
-.hero-top{padding:12px 64px 12px}
-@media(max-width:900px){
-  body{padding-top:0!important}
-  .hero-top{padding:10px 24px 10px}
-}
-@media(max-width:600px){.hero-top{padding:8px 16px 8px}}
 </style>
 </head>
 <body>
@@ -2189,24 +2188,18 @@ body.nav-open{padding-left:0!important}
 <div id="pgbar"></div>
 
 <!-- NAV -->
-<nav>
-  <div class="nav-logo-wrap">
-    <svg width="90" height="18" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg"><text x="0" y="19" font-family="Inter,sans-serif" font-size="17" font-weight="900" fill="#30B4E6" letter-spacing="-0.5">brandhub</text></svg>
-  </div>
-  <button class="nav-ham" id="nav-ham" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+<nav></nav>
 <div class="nav-overlay" id="nav-overlay"></div>
 <div class="nav-drawer" id="nav-drawer">
   <div class="nav-links">
-    <a href="#hero" class="nav-a">Hero OS</a>
+    
+    
     <a href="#who-we-are" class="nav-a">Who We Are</a>
-    <a href="#why-exist" class="nav-a">Why We Exist</a>
-    <a href="#platform" class="nav-a">Platform</a>
     <a href="#how-it-works" class="nav-a">How It Works</a>
-    <a href="#calculator" class="nav-a">Calculator</a>
-    <a href="#case-studies" class="nav-a">Case Studies</a>
+    
+    <div class="nav-divider"></div>
+    <a href="#true-cost" class="nav-a">Cost</a>
+    <a href="#next-steps" class="nav-a">Next Steps</a>
   </div>
 </div>
 
@@ -3000,14 +2993,634 @@ body.nav-open{padding-left:0!important}
 var CLIENT = {
 
   /* ── Identity ────────────────────────────────────────────────────────── */
-  name: "MGPI",
-  sub:  "Prospective Client",
-  clientName: "MGPI",
+  name: "Heaven Hill Brands",
+  sub:  "Kentucky Distillers Since 1935",
 
   /* ── Logo
      Option A: set logoImg to a full <img ...> HTML string (base64 or URL).
      Option B: leave logoImg as "" to auto-build an initials emblem below.   */
-  logoImg: `<img src="data:image/png;base64,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" alt="MGPI logo" style="height:80px;width:auto;display:block;margin:0 auto">`,
+  logoImg: ``,
+
+  /* ── Emblem (only used when logoImg is "") ───────────────────────────── */
+  emblemInitials:  "LOGO",
+  emblemColor1:    "#444",
+  emblemColor2:    "#666",
+  emblemShadow:    "rgba(0,0,0,.2)",
+  emblemTextColor: "#ccc",
+
+  /* ── AI Tools → Atlas ────────────────────────────────────────────────── */
+  atlasUrl:  "https://brandappheavenhill-dyk2gen9apqrdbyqxwsdcp.streamlit.app/",
+  atlasDesc: "Bluetooth beacons in your displays ping phones and VIP's fleet network in real time. Watch a Heaven Hill display travel from production through the VIP hub, to retail floor — every step tracked.",
+
+  /* ── Email CTA subjects ──────────────────────────────────────────────── */
+  emailDemo:  "brandhub Demo Request",
+  emailRoi:   "brandhub ROI Model Request",
+  emailPilot: "brandhub Pilot Program",
+
+  /* ── Competitor label in comparison tables ───────────────────────────── */
+  competitor: "HH Global / Halo",
+
+  /* ── Hero sidebar: Your Top Priorities
+     Each item: { icon, title, links: [{ href, label }] }                  */
+  priorities: [
+    {
+      icon: "💵", title: "Cost Optimization",
+      links: [
+        { href: "#cs-consolidation", label: "Case Study 01 · Consolidation & Scale →" }
+      ]
+    },
+    {
+      icon: "📊", title: "Advanced Analytics and AI",
+      links: [
+        { href: "#ai-features", label: "AI Powered Tools →" }
+      ]
+    },
+    {
+      icon: "✅", title: "Easy to Use",
+      links: [
+        { href: "#cs-adoption", label: "Case Study 04 · Platform Adoption & Simplicity →" }
+      ]
+    }
+  ]
+};
+/* ═══════════════════════════════════════════════════════════════════════════
+   END CLIENT CONFIG
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+(function(){
+  // ── Configurable variables ─────────────────────────────────────────────────
+  var TC_PLATFORM_FEE   = 250000;  // brandhub annual platform fee ($)
+  var TC_HOURLY_RATE    = 150;     // managed service hourly rate ($/hr)  ← update as needed
+  var TC_HOURS_PER_YEAR = 1500;    // estimated managed service hours/yr  ← update as needed
+  // ────────────────────────────────────────────────────────────────────────────
+
+  function fmtM(n){
+    if(n >= 1000000) return '$' + (n/1000000).toFixed(n % 500000 === 0 ? 1 : 2).replace(/\.?0+$/,'') + 'M';
+    if(n >= 1000)    return '$' + Math.round(n/1000) + 'K';
+    return '$' + n;
+  }
+  function fmtFull(n){ return '$' + Math.round(n).toLocaleString(); }
+
+  function updateTC(){
+    var spendEl  = document.getElementById('tc-spend');
+    var markupEl = document.getElementById('tc-markup');
+    if(!spendEl || !markupEl) return;
+
+    var pos    = parseInt(spendEl.value);
+    var markup = parseInt(markupEl.value) / 100;
+
+    document.getElementById('tc-spend-disp').textContent  = fmtM(pos);
+    document.getElementById('tc-markup-disp').textContent = Math.round(markup * 100) + '%';
+
+    var cFee   = pos * markup;
+    var cTotal = pos + cFee;
+    var b1Total = pos + TC_PLATFORM_FEE;
+    var b1Save  = cTotal - b1Total;
+    var b2Svc   = TC_HOURLY_RATE * TC_HOURS_PER_YEAR;
+    var b2Total = pos + TC_PLATFORM_FEE + b2Svc;
+    var b2Save  = cTotal - b2Total;
+
+    document.getElementById('tc-c-pos').textContent   = fmtFull(pos);
+    document.getElementById('tc-c-fee').textContent   = fmtFull(cFee);
+    document.getElementById('tc-c-total').textContent = fmtFull(cTotal);
+
+    document.getElementById('tc-b1-pos').textContent   = fmtFull(pos);
+    document.getElementById('tc-b1-plat').textContent  = fmtFull(TC_PLATFORM_FEE);
+    document.getElementById('tc-b1-total').textContent = fmtFull(b1Total);
+    document.getElementById('tc-b1-save').textContent  = 'Saves ' + fmtFull(b1Save) + '/yr';
+
+    document.getElementById('tc-b2-pos').textContent    = fmtFull(pos);
+    document.getElementById('tc-b2-plat').textContent   = fmtFull(TC_PLATFORM_FEE);
+    document.getElementById('tc-b2-svc').textContent    = fmtFull(b2Svc);
+    document.getElementById('tc-b2-detail').textContent = TC_HOURS_PER_YEAR.toLocaleString() + ' hrs × $' + TC_HOURLY_RATE + '/hr';
+    document.getElementById('tc-b2-total').textContent  = fmtFull(b2Total);
+    document.getElementById('tc-b2-save').textContent   = 'Saves ' + fmtFull(b2Save) + '/yr';
+
+    var blockSizes = [500, 1000, TC_HOURS_PER_YEAR];
+    var grid = document.getElementById('tc-blocks-grid');
+    if(grid){
+      grid.innerHTML = blockSizes.map(function(hrs){
+        var total = hrs * TC_HOURLY_RATE;
+        return '<div class="tc-block-card">' +
+          '<div class="tc-block-hrs">' + hrs.toLocaleString() + ' hrs</div>' +
+          '<div class="tc-block-rate">$' + TC_HOURLY_RATE + ' / hr &nbsp;·&nbsp; flat rate</div>' +
+          '<div class="tc-block-total">= ' + fmtFull(total) + '</div>' +
+          '</div>';
+      }).join('');
+    }
+  }
+
+  var s1 = document.getElementById('tc-spend');
+  var s2 = document.getElementById('tc-markup');
+  if(s1) s1.addEventListener('input', updateTC);
+  if(s2) s2.addEventListener('input', updateTC);
+  updateTC();
+})();
+
+history.scrollRestoration = 'manual';
+window.scrollTo(0, 0);
+
+
+// HAMBURGER NAV
+(function() {
+  var ham     = document.getElementById('nav-ham');
+  var drawer  = document.getElementById('nav-drawer');
+  var overlay = document.getElementById('nav-overlay');
+  function openNav()  { ham.classList.add('open');    drawer.classList.add('open');    overlay.classList.add('open'); }
+  function closeNav() { ham.classList.remove('open'); drawer.classList.remove('open'); overlay.classList.remove('open'); }
+  function toggle()   { drawer.classList.contains('open') ? closeNav() : openNav(); }
+  if(ham)     ham.addEventListener('click', toggle);
+  if(overlay) overlay.addEventListener('click', closeNav);
+  document.querySelectorAll('.nav-drawer .nav-a').forEach(function(a) {
+    a.addEventListener('click', closeNav);
+  });
+})();
+
+// SCROLL PROGRESS
+var pb = document.getElementById('pgbar');
+window.addEventListener('scroll', () => {
+  var s = document.documentElement.scrollTop;
+  var t = document.documentElement.scrollHeight - window.innerHeight;
+  pb.style.width = (s / t * 100) + '%';
+}, { passive: true });
+// NAV ACTIVE STATE
+(function() {
+  var navLinks = document.querySelectorAll('.nav-a[href^="#"]');
+  var sections = [];
+  navLinks.forEach(function(a) {
+    var id = a.getAttribute('href').slice(1);
+    var el = document.getElementById(id);
+    if (el) sections.push({ el: el, a: a });
+  });
+  function setActive() {
+    var scrollY = window.scrollY + window.innerHeight * 0.25;
+    var current = sections[0];
+    sections.forEach(function(s) {
+      if (s.el.offsetTop <= scrollY) current = s;
+    });
+    navLinks.forEach(function(a) { a.classList.remove('active'); });
+    if (current) current.a.classList.add('active');
+  }
+  window.addEventListener('scroll', setActive, { passive: true });
+  setActive();
+})();
+
+
+// COST TICKER — starts 2 hrs "in" so the number is immediately visible
+var loadT  = Date.now() - (2 * 60 * 60 * 1000);
+var perMs  = 2770830 / 30 / 24 / 60 / 60 / 1000;
+var tickEl = document.getElementById('ticker-amt');
+function tickFmt(n) {
+  var parts = n.toFixed(2).split('.');
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return '$' + parts[0] + '.' + parts[1];
+}
+// Use setInterval (not rAF) so it keeps ticking even when tab/frame is backgrounded
+if (tickEl) {
+  tickEl.textContent = tickFmt((Date.now() - loadT) * perMs);
+  setInterval(function() {
+    tickEl.textContent = tickFmt((Date.now() - loadT) * perMs);
+  }, 80);
+}
+
+
+// ── ECOSYSTEM BUILDER ──────────────────────────────────────────────
+(function buildEcosystems() {
+  var nodes = [
+    { emoji:'🏢', label:'Distributors',           color:'#30B4E6', glow:'rgba(48,180,230,0.25)',  deg: -90 },
+    { emoji:'📦', label:'3P Warehouses',           color:'#30B4E6', glow:'rgba(48,180,230,0.25)',  deg: -54 },
+    { emoji:'👥', label:'Sales &\nField Teams',    color:'#30B4E6', glow:'rgba(48,180,230,0.25)',  deg: -18 },
+    { emoji:'🎨', label:'Brand Teams',             color:'#30B4E6', glow:'rgba(48,180,230,0.25)',  deg:  18 },
+    { emoji:'💰', label:'Finance Systems',         color:'#30B4E6', glow:'rgba(48,180,230,0.25)',  deg:  54 },
+    { emoji:'🛒', label:'Retailers &\nOn-Premise', color:'#FF9119', glow:'rgba(255,145,25,0.25)',  deg:  90 },
+    { emoji:'✏️', label:'Design &\nProduction',    color:'#FF9119', glow:'rgba(255,145,25,0.25)',  deg: 126 },
+    { emoji:'🎭', label:'3P Creative',             color:'#FF9119', glow:'rgba(255,145,25,0.25)',  deg: 162 },
+    { emoji:'🔧', label:'External\nVendors',       color:'#FF9119', glow:'rgba(255,145,25,0.25)',  deg: 198 },
+    { emoji:'🖨️', label:'Print & POS\nVendors',   color:'#FF9119', glow:'rgba(255,145,25,0.25)',  deg: 234 },
+  ];
+
+  function buildScene(sceneEl, size) {
+    sceneEl.style.position = 'relative';
+    sceneEl.style.width    = size + 'px';
+    sceneEl.style.height   = size + 'px';
+
+    var cx = size / 2, cy = size / 2;
+    var outerR  = size * 0.32;           // spoke radius to node centers
+    var ringOD  = Math.round(size * 0.64); // outer dashed ring diameter
+    var ringID  = Math.round(size * 0.52); // inner dashed ring diameter
+    var hubSize = Math.round(size * 0.32); // center hub diameter (integer pixels)
+    var hubR    = hubSize / 2;             // center hub radius
+    var bubbleR = size * 0.065;            // node bubble radius
+
+    // Clear existing content
+    sceneEl.innerHTML = '';
+
+    // SVG lines (spokes)
+    var svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+    svg.setAttribute('class','eco-svg');
+    svg.setAttribute('xmlns','http://www.w3.org/2000/svg');
+    svg.setAttribute('viewBox', '0 0 ' + size + ' ' + size);
+    sceneEl.appendChild(svg);
+
+    // Compute exact pixel offsets — pure integers, no percentages
+    var ringOuterOffset = Math.round((size - ringOD) / 2);
+    var ringMidOffset   = Math.round((size - ringID) / 2);
+    var hubOffset       = Math.round((size - hubSize) / 2);
+
+    // Gear rings — absolute pixel positioning
+    var ringOuter = document.createElement('div');
+    ringOuter.className = 'eco-ring eco-ring-outer';
+    ringOuter.style.width  = ringOD + 'px';
+    ringOuter.style.height = ringOD + 'px';
+    ringOuter.style.top    = ringOuterOffset + 'px';
+    ringOuter.style.left   = ringOuterOffset + 'px';
+    ringOuter.style.transform = '';
+    sceneEl.appendChild(ringOuter);
+
+    var ringMid = document.createElement('div');
+    ringMid.className = 'eco-ring eco-ring-mid';
+    ringMid.style.width  = ringID + 'px';
+    ringMid.style.height = ringID + 'px';
+    ringMid.style.top    = ringMidOffset + 'px';
+    ringMid.style.left   = ringMidOffset + 'px';
+    ringMid.style.transform = '';
+    sceneEl.appendChild(ringMid);
+
+    // Center hub — position:relative inside display:grid scene, grid places it dead center
+    var hub = document.createElement('div');
+    hub.className = 'eco-center';
+    hub.style.width     = hubSize + 'px';
+    hub.style.height    = hubSize + 'px';
+    hub.style.position  = 'relative';
+    hub.style.zIndex    = '10';
+    hub.style.flexShrink = '0';
+    hub.innerHTML = `
+      <div class="eco-center-pulse"></div>
+      <div class="eco-center-inner">
+        <div style="font-size:${Math.round(size*0.022)}px;font-weight:900;color:white;letter-spacing:-.3px;line-height:1">brandhub</div>
+        <div style="font-size:${Math.round(size*0.012)}px;color:#30B4E6;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-top:3px">platform</div>
+      </div>`;
+    sceneEl.appendChild(hub);
+
+    // Spokes + nodes
+    nodes.forEach(function(n) {
+      var rad  = n.deg * Math.PI / 180;
+      var nx   = cx + outerR * Math.cos(rad);
+      var ny   = cy + outerR * Math.sin(rad);
+
+      // SVG spoke line
+      var line = document.createElementNS('http://www.w3.org/2000/svg','line');
+      line.setAttribute('x1', cx);
+      line.setAttribute('y1', cy);
+      line.setAttribute('x2', nx);
+      line.setAttribute('y2', ny);
+      line.setAttribute('stroke', n.color);
+      line.setAttribute('stroke-width', '1');
+      line.setAttribute('stroke-opacity', '0.25');
+      line.setAttribute('stroke-dasharray', '4 4');
+      svg.appendChild(line);
+
+      // Animated dot along spoke
+      var circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
+      circle.setAttribute('r', Math.max(2, size * 0.004));
+      circle.setAttribute('fill', n.color);
+      circle.setAttribute('opacity', '0.7');
+      var anim = document.createElementNS('http://www.w3.org/2000/svg','animateMotion');
+      anim.setAttribute('dur', (2.5 + Math.random() * 2).toFixed(1) + 's');
+      anim.setAttribute('repeatCount','indefinite');
+      anim.setAttribute('path', `M ${cx} ${cy} L ${nx} ${ny}`);
+      circle.appendChild(anim);
+      svg.appendChild(circle);
+
+      // Node bubble — centered exactly at (nx, ny).
+      // Label lives INSIDE the node so CSS :hover works cleanly;
+      // it is hidden by default and fades in on hover — this is the only
+      // reliable way to avoid overlap with 10 nodes at 36° spacing.
+      var bubbleSz = bubbleR * 2;
+      var node = document.createElement('div');
+      node.className = 'eco-node';
+      node.style.left = nx + 'px';
+      node.style.top  = ny + 'px';
+      node.style.setProperty('--node-color', n.color);
+      node.style.setProperty('--node-glow',  n.glow);
+      node.innerHTML = `
+        <div class="eco-node-bubble" style="width:${bubbleSz}px;height:${bubbleSz}px;font-size:${Math.round(bubbleR*0.7)}px">${n.emoji}</div>
+        <div class="eco-node-label" style="font-size:${Math.round(size*0.030)}px;max-width:${Math.round(bubbleSz*2.2)}px">${n.label.replace(/\n/g,'<br>')}</div>`;
+      sceneEl.appendChild(node);
+    });
+  }
+
+  // Build appendix full-size scene
+  var appendixScene = document.querySelector('.eco-scene:not(#eco-scene)');
+  if (appendixScene) buildScene(appendixScene, 580);
+
+  // Build hero scene
+  var heroScene = document.getElementById('eco-scene');
+  if (heroScene) buildScene(heroScene, 380);
+})();
+
+// FADE-UP OBSERVER
+var io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.10 });
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+// COUNT-UP
+function countUp(el) {
+  var target = parseInt(el.dataset.count);
+  if (!target) return;
+  var prefix = el.dataset.prefix || '';
+  var suffix = el.dataset.suffix || '';
+  var sep    = el.dataset.separator || '';
+  var dur    = 1800, t0 = performance.now();
+  function tick(now) {
+    var p    = Math.min((now - t0) / dur, 1);
+    var ease = 1 - Math.pow(1 - p, 3);
+    var val  = Math.round(ease * target);
+    el.textContent = prefix + (sep ? val.toLocaleString() : val) + suffix;
+    if (p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+document.querySelectorAll('[data-count]').forEach(el => {
+  var cio = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) { countUp(el); cio.unobserve(el); }
+  }, { threshold: 0.4 });
+  cio.observe(el);
+});
+
+// DISCOVERY ANSWERS
+function saveDiscoAnswers() {
+  var cards = document.querySelectorAll('.disco-card');
+  var lines = [];
+
+  cards.forEach((card, i) => {
+    var qText = card.querySelector('.disco-q')?.textContent?.trim() || ('Q' + (i+1));
+    var selected = [...card.querySelectorAll('.disco-chip.selected:not(.other-toggle)')].map(c => c.textContent.trim());
+    var otherVal = card.querySelector('.disco-other-input')?.value?.trim();
+    if (otherVal) selected.push('Other: ' + otherVal);
+    // Q6 open textarea
+    var openVal = card.querySelector('textarea')?.value?.trim();
+    if (openVal) selected.push(openVal);
+    lines.push('Q' + (i+1) + ': ' + qText);
+    lines.push('→ ' + (selected.length ? selected.join(', ') : '(no answer)'));
+    lines.push('');
+  });
+
+  // Build mailto
+  var clientName = (typeof CLIENT !== 'undefined' && CLIENT.clientName) ? CLIENT.clientName : 'Prospect';
+  var subject = 'brandhub Discovery Answers — ' + clientName;
+  var body = 'Discovery answers captured during the brandhub presentation:\n\n' + lines.join('\n');
+  var mailto = 'mailto:jfrohlinger@selectdesign.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+
+  try { localStorage.setItem('brandhub_discovery', JSON.stringify(lines)); } catch(e) {}
+  window.location.href = mailto;
+  document.getElementById('disco-saved-msg').style.display = 'block';
+}
+
+// UPGRADED ROI CALCULATOR (two sliders: budget + markup%)
+var sliderB = document.getElementById('calc-slider');
+var sliderM = document.getElementById('markup-slider');
+function fmtS(n) {
+  if (n >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
+  if (n >= 1000)    return '$' + Math.round(n / 1000) + 'K';
+  return '$' + n;
+}
+var calcCats = [
+  { num: '01', name: 'Permanent Retail Fixtures', shareLow: .30, shareHigh: .35, savingsLow: .22, savingsHigh: .38 },
+  { num: '02', name: 'Printed POS Materials',      shareLow: .20, shareHigh: .25, savingsLow: .06, savingsHigh: .12 },
+  { num: '03', name: 'Promotional & Event',         shareLow: .12, shareHigh: .18, savingsLow: .14, savingsHigh: .24 },
+  { num: '04', name: 'Branded Merchandise',         shareLow: .10, shareHigh: .15, savingsLow: .18, savingsHigh: .32 },
+];
+function calcUpdate() {
+  var spend  = +sliderB.value;
+  var markup = +sliderM.value / 100;
+  document.getElementById('spend-disp').textContent  = fmtS(spend);
+  document.getElementById('markup-disp').textContent = sliderM.value + '%';
+  var v1    = Math.round(spend * markup * 0.65);
+  var v2    = Math.round(spend * 0.03);
+  var v3    = Math.round(spend * 0.02);
+  var total = v1 + v2 + v3;
+  var pct   = Math.round((total / spend) * 100);
+  document.getElementById('total-v').textContent     = fmtS(total);
+  document.getElementById('savings-pct').textContent = pct + '%';
+  document.getElementById('amt1').textContent        = fmtS(v1);
+  document.getElementById('amt2').textContent        = fmtS(v2);
+  document.getElementById('amt3').textContent        = fmtS(v3);
+  document.getElementById('mo-v').textContent        = '+' + fmtS(total);
+  var mx = Math.max(v1, v2, v3);
+  if (mx > 0) {
+    document.getElementById('bar1').style.width = (v1 / mx * 100) + '%';
+    document.getElementById('bar2').style.width = (v2 / mx * 100) + '%';
+    document.getElementById('bar3').style.width = (v3 / mx * 100) + '%';
+  }
+  var grid = document.getElementById('breakdown-grid');
+  if (grid) {
+    grid.innerHTML = '';
+    calcCats.forEach(function(cat) {
+      var shareMid  = (cat.shareLow + cat.shareHigh) / 2;
+      var catBudget = Math.round(spend * shareMid);
+      var savesMid  = (cat.savingsLow + cat.savingsHigh) / 2;
+      var catSave   = Math.round(catBudget * savesMid);
+      grid.innerHTML += '<div class="bd-card"><div class="bd-num">' + cat.num + '</div><div class="bd-name">' + cat.name + '</div><div class="bd-spend">Est. spend: ' + fmtS(catBudget) + '/yr</div><div class="bd-savings">Save ~' + fmtS(catSave) + '</div></div>';
+    });
+  }
+}
+if (sliderB) sliderB.addEventListener('input', calcUpdate);
+if (sliderM) sliderM.addEventListener('input', calcUpdate);
+if (sliderB || sliderM) calcUpdate();
+
+// PARETO CHART
+(function() {
+  var paretoData = [
+    { label: 'Permanent<br>Fixtures', pct: 32, big4: true },
+    { label: 'Printed<br>POS', pct: 23, big4: true },
+    { label: 'Promo &<br>Event', pct: 14, big4: true },
+    { label: 'Branded<br>Merch', pct: 11, big4: true },
+    { label: '300+<br>other items', pct: 20, big4: false },
+  ];
+  var maxPct = 40;
+  var chartEl = document.getElementById('posParetoBars');
+  if (!chartEl) return;
+  paretoData.forEach(function(item) {
+    var barH = Math.round((item.pct / maxPct) * 148);
+    var div = document.createElement('div');
+    div.className = 'bar-item';
+    div.innerHTML = '<div class="bar-fill ' + (item.big4 ? 'big4' : 'tail') + '" style="height:' + barH + 'px;position:relative"><div class="bar-pct">' + item.pct + '%</div></div><div class="bar-label">' + item.label + '</div>';
+    chartEl.appendChild(div);
+  });
+})();
+
+// ── PRINT COST CALCULATOR ─────────────────────────────────────────────────
+(function() {
+  function fmtC(n) {
+    if (n >= 1000000) return '$' + (n / 1000000).toFixed(2) + 'M';
+    if (n >= 1000)    return '$' + (n / 1000).toFixed(1) + 'K';
+    return '$' + n.toFixed(2);
+  }
+  function fmtU(n) { return Math.round(n).toLocaleString(); }
+
+  function updatePrintCalc() {
+    var units = parseFloat(document.getElementById('pi-units').value) || 10000;
+    var price = parseFloat(document.getElementById('pi-price').value) || 1.50;
+    var waste = parseFloat(document.getElementById('pi-waste').value) || 30;
+    var fee   = parseFloat(document.getElementById('pi-fee').value)   || 15;
+
+    // ── Current ──────────────────────────────────────────────────────────
+    var cProd   = units * price;
+    var cFeeAmt = cProd * (fee / 100);
+    var cTotal  = cProd + cFeeAmt;
+    var cInMkt  = Math.round(units * (1 - waste / 100));
+
+    // ── Option 1: price −10%, same waste & fee ───────────────────────────
+    var pPrice  = price * 0.90;
+    var pProd   = units * pPrice;
+    var pFeeAmt = pProd * (fee / 100);
+    var pTotal  = pProd + pFeeAmt;
+    var pInMkt  = cInMkt; // same waste → same in-market
+
+    // ── brandhub: waste=10%, fee=5%, fewer units to hit same in-market ───
+    var bhWaste  = 10;
+    var bhFee    = 5;
+    var bhUnits  = Math.ceil(cInMkt / (1 - bhWaste / 100));
+    var bhProd   = bhUnits * price; // same price/unit
+    var bhFeeAmt = bhProd * (bhFee / 100);
+    var bhTotal  = bhProd + bhFeeAmt;
+    var bhInMkt  = Math.round(bhUnits * (1 - bhWaste / 100));
+
+    // ── Write Current ────────────────────────────────────────────────────
+    document.getElementById('c-prod').textContent     = fmtC(cProd);
+    document.getElementById('c-fee').textContent      = fmtC(cFeeAmt);
+    document.getElementById('c-inmarket').textContent = fmtU(cInMkt) + ' units';
+    document.getElementById('c-total').textContent    = fmtC(cTotal);
+
+    // ── Write Option 1 ───────────────────────────────────────────────────
+    document.getElementById('p-units').textContent    = fmtU(units);
+    document.getElementById('p-price').textContent    = '$' + pPrice.toFixed(2);
+    document.getElementById('p-waste').textContent    = waste + '%';
+    document.getElementById('p-fee').textContent      = fee + '%';
+    document.getElementById('p-prod').textContent     = fmtC(pProd);
+    document.getElementById('p-feeval').textContent   = fmtC(pFeeAmt);
+    document.getElementById('p-inmarket').textContent = fmtU(pInMkt) + ' units';
+    document.getElementById('p-total').textContent    = fmtC(pTotal);
+    var pSave = cTotal - pTotal;
+    var pPct  = Math.round((pSave / cTotal) * 100);
+    var pDel  = document.getElementById('p-delta');
+    pDel.textContent = pSave > 0 ? '↓ Save ' + fmtC(pSave) + ' (' + pPct + '% less)' : 'No savings vs baseline';
+    pDel.className   = 'pc-delta ' + (pSave > 5 ? 'small-save' : 'neutral');
+
+    // ── Write brandhub ────────────────────────────────────────────────────
+    document.getElementById('b-units').textContent    = fmtU(bhUnits);
+    document.getElementById('b-price').textContent    = '$' + price.toFixed(2);
+    document.getElementById('b-prod').textContent     = fmtC(bhProd);
+    document.getElementById('b-feeval').textContent   = fmtC(bhFeeAmt);
+    document.getElementById('b-inmarket').textContent = fmtU(bhInMkt) + ' units';
+    document.getElementById('b-total').textContent    = fmtC(bhTotal);
+    var bSave = cTotal - bhTotal;
+    var bPct  = Math.round((bSave / cTotal) * 100);
+    var bDel  = document.getElementById('b-delta');
+    bDel.textContent = bSave > 0 ? '↓ Save ' + fmtC(bSave) + ' (' + bPct + '% less)' : 'No savings vs baseline';
+    bDel.className   = 'pc-delta ' + (bSave > 5 ? 'saving' : 'neutral');
+  }
+
+  ['pi-units', 'pi-price', 'pi-waste', 'pi-fee'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('input', updatePrintCalc);
+  });
+  updatePrintCalc();
+})();
+
+/* ── CLIENT CONFIG INJECTOR ──────────────────────────────────────────────
+   Runs on every page load. Reads CLIENT config above and wires it into DOM.
+   ─────────────────────────────────────────────────────────────────────── */
+(function () {
+  var C = (typeof CLIENT !== 'undefined') ? CLIENT : {};
+
+  /* 1 ─ Logo / Emblem */
+  var wrap = document.getElementById('client-logo-wrap');
+  if (wrap) {
+    var logo = '';
+    if (C.logoImg) {
+      logo = C.logoImg;
+    } else {
+      var c1 = C.emblemColor1 || '#333', c2 = C.emblemColor2 || '#555';
+      var sh = C.emblemShadow || 'rgba(0,0,0,.3)', tc = C.emblemTextColor || '#fff';
+      logo = '<div class="hh-emblem" style="background:linear-gradient(135deg,' + c1 + ',' + c2 + ');box-shadow:0 8px 32px ' + sh + ';color:' + tc + '">' + (C.emblemInitials || '??') + '</div>';
+    }
+    wrap.innerHTML = '<div class="hh-logo-wrap">' + logo + '</div>';
+  }
+
+  /* 2 ─ Priorities — inject into individual row slots for aligned layout */
+  if (Array.isArray(C.priorities)) {
+    C.priorities.forEach(function(p, i) {
+      var slot = document.getElementById('priority-slot-' + i);
+      if (!slot) return;
+      var linksHtml = '';
+      if (p.links && p.links.length) {
+        linksHtml = '<div class="priority-links">'
+          + p.links.map(function(l){
+              return '<a href="' + l.href + '" class="priority-link">' + l.label + '</a>';
+            }).join('')
+          + '</div>';
+      }
+      slot.innerHTML = '<div class="priority-inner">'
+        + '<span class="priority-icon">' + (p.icon || '') + '</span>'
+        + '<div class="priority-title">' + p.title + '</div>'
+        + linksHtml
+        + '</div>';
+    });
+  }
+
+  /* 3 ─ Atlas URL + description */
+  var atlasBtn = document.getElementById('atlas-demo-btn');
+  if (atlasBtn && C.atlasUrl) atlasBtn.href = C.atlasUrl;
+  var atlasDesc = document.getElementById('atlas-desc');
+  if (atlasDesc && C.atlasDesc) atlasDesc.textContent = C.atlasDesc;
+
+  /* 4 ─ Email subjects */
+  document.querySelectorAll('[data-email="demo"]').forEach(function(a) {
+    a.href = 'mailto:jfrohlinger@selectdesign.com?subject=' + encodeURIComponent(C.emailDemo || 'brandhub Demo Request');
+  });
+  document.querySelectorAll('[data-email="roi"]').forEach(function(a) {
+    a.href = 'mailto:jfrohlinger@selectdesign.com?subject=' + encodeURIComponent(C.emailRoi || 'brandhub ROI Model Request');
+  });
+  document.querySelectorAll('[data-email="pilot"]').forEach(function(a) {
+    a.href = 'mailto:jfrohlinger@selectdesign.com?subject=' + encodeURIComponent(C.emailPilot || 'brandhub Pilot Program');
+  });
+
+  /* 5 ─ Competitor label in comparison + questions tables */
+  if (C.competitor) {
+    document.querySelectorAll('.tq-brand').forEach(function(el) {
+      if (el.textContent.trim() === 'HH Global / Halo') el.textContent = C.competitor;
+    });
+    document.querySelectorAll('.comp-table th').forEach(function(el) {
+      if (/HH Global/.test(el.textContent))
+        el.textContent = el.textContent.replace(/HH Global \/ Halo(\s*\/\s*IMS)?/, C.competitor + ' / IMS');
+    });
+  }
+})();
+/* ── END INJECTOR ─────────────────────────────────────────────────────── */
+/* ── heaven-hill scripts ── */
+/* JS extracted from Heaven Hill source file */
+/* Source: meeting-2-full-presentation.html */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CLIENT CONFIG — Edit ONLY this block to personalise for a new client.
+   Copy this entire file and update the values below.
+   Everything else (platform features, case studies, pricing) is shared.
+   ═══════════════════════════════════════════════════════════════════════════ */
+var CLIENT = {
+
+  /* ── Identity ────────────────────────────────────────────────────────── */
+  name: "Heaven Hill Brands",
+  sub:  "Kentucky Distillers Since 1935",
+
+  /* ── Logo
+     Option A: set logoImg to a full <img ...> HTML string (base64 or URL).
+     Option B: leave logoImg as "" to auto-build an initials emblem below.   */
+  logoImg: `<img src="data:image/png;base64,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" alt="Heaven Hill Brands" style="height:80px;width:auto;display:block;margin:0 auto">`,
 
   /* ── Emblem (only used when logoImg is "") ───────────────────────────── */
   emblemInitials:  "HH",
@@ -3017,36 +3630,39 @@ var CLIENT = {
   emblemTextColor: "#FFD700",
 
   /* ── AI Tools → Atlas ────────────────────────────────────────────────── */
-  atlasUrl:  "",
-  atlasDesc: "",
+  atlasUrl:  "https://brandappheavenhill-dyk2gen9apqrdbyqxwsdcp.streamlit.app/",
+  atlasDesc: "Bluetooth beacons in your displays ping phones and VIP's fleet network in real time. Watch a Heaven Hill display travel from production through the VIP hub, to retail floor — every step tracked.",
 
   /* ── Email CTA subjects ──────────────────────────────────────────────── */
-  emailDemo:  "brandhub Demo Request - MGPI",
-  emailRoi:   "brandhub ROI Model Request - MGPI",
-  emailPilot: "brandhub Pilot Program - MGPI",
+  emailDemo:  "brandhub Demo Request",
+  emailRoi:   "brandhub ROI Model Request",
+  emailPilot: "brandhub Pilot Program",
 
   /* ── Competitor label in comparison tables ───────────────────────────── */
-  competitor: "Current Provider",
+  competitor: "HH Global / Halo",
 
   /* ── Hero sidebar: Your Top Priorities
      Each item: { icon, title, links: [{ href, label }] }                  */
   priorities: [
     {
-      icon: "💵", title: "Cost Efficiency",
+      icon: "🗺️", title: "National vs. Local Governance",
       links: [
-        { href: "#calculator", label: "Savings calculator →" }
+        { href: "#cs-adoption", label: "See how 400 field users adopted it with zero training →" },
+        { href: "#calculator", label: "See what untracked local spend is really costing →" }
       ]
     },
     {
-      icon: "⚙️", title: "Operational Clarity",
+      icon: "💵", title: "One-Off Pricing Confidence",
       links: [
-        { href: "#how-it-works", label: "How it works →" }
+        { href: "#pos-pricing", label: "Benchmark fast-turns against $100M+ in real data →" },
+        { href: "#three-questions", label: "Did you overpay? →" }
       ]
     },
     {
-      icon: "📈", title: "Proven Outcomes",
+      icon: "🔗", title: "Legacy Relationships + Modern Platform",
       links: [
-        { href: "#case-studies", label: "Case studies →" }
+        { href: "#platform", label: "Keep your vendor relationships, add the intelligence layer →" },
+        { href: "#how-it-works", label: "How SRS transitions to brandhub →" }
       ]
     }
   ]
@@ -3139,66 +3755,36 @@ var CLIENT = {
 })();
 
 (function(){
-  var sliderB = document.getElementById('calc-slider');
-  var sliderM = document.getElementById('markup-slider');
-  if (!sliderB || !sliderM) return;
-
-  function fmtS(n) {
-    if (n >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
-    if (n >= 1000) return '$' + Math.round(n / 1000) + 'K';
-    return '$' + n;
+  function fmtM(v){
+    if(v>=1000000) return '$'+(v/1000000).toFixed(1)+'M';
+    return '$'+(v/1000).toFixed(0)+'K';
   }
-
-  var calcCats = [
-    { num: '01', name: 'Permanent Retail Fixtures', shareLow: 0.30, shareHigh: 0.35, savingsLow: 0.22, savingsHigh: 0.38 },
-    { num: '02', name: 'Printed POS Materials', shareLow: 0.20, shareHigh: 0.25, savingsLow: 0.06, savingsHigh: 0.12 },
-    { num: '03', name: 'Promotional & Event', shareLow: 0.12, shareHigh: 0.18, savingsLow: 0.14, savingsHigh: 0.24 },
-    { num: '04', name: 'Branded Merchandise', shareLow: 0.10, shareHigh: 0.15, savingsLow: 0.18, savingsHigh: 0.32 }
-  ];
-
-  function calcUpdate() {
-    var spend = +sliderB.value;
-    var markup = +sliderM.value / 100;
-
-    document.getElementById('spend-disp').textContent = fmtS(spend);
-    document.getElementById('markup-disp').textContent = sliderM.value + '%';
-
-    var v1 = Math.round(spend * markup * 0.65);
-    var v2 = Math.round(spend * 0.03);
-    var v3 = Math.round(spend * 0.02);
-    var total = v1 + v2 + v3;
-    var pct = spend > 0 ? Math.round((total / spend) * 100) : 0;
-
-    document.getElementById('total-v').textContent = fmtS(total);
-    document.getElementById('savings-pct').textContent = pct + '%';
-    document.getElementById('amt1').textContent = fmtS(v1);
-    document.getElementById('amt2').textContent = fmtS(v2);
-    document.getElementById('amt3').textContent = fmtS(v3);
-    document.getElementById('mo-v').textContent = '+' + fmtS(total);
-
-    var mx = Math.max(v1, v2, v3);
-    if (mx > 0) {
-      document.getElementById('bar1').style.width = (v1 / mx * 100) + '%';
-      document.getElementById('bar2').style.width = (v2 / mx * 100) + '%';
-      document.getElementById('bar3').style.width = (v3 / mx * 100) + '%';
-    }
-
-    var grid = document.getElementById('breakdown-grid');
-    if (grid) {
-      grid.innerHTML = '';
-      calcCats.forEach(function(cat) {
-        var shareMid = (cat.shareLow + cat.shareHigh) / 2;
-        var catBudget = Math.round(spend * shareMid);
-        var savesMid = (cat.savingsLow + cat.savingsHigh) / 2;
-        var catSave = Math.round(catBudget * savesMid);
-        grid.innerHTML += '<div class="bd-card"><div class="bd-num">' + cat.num + '</div><div class="bd-name">' + cat.name + '</div><div class="bd-spend">Est. spend: ' + fmtS(catBudget) + '/yr</div><div class="bd-savings">Save ~' + fmtS(catSave) + '</div></div>';
-      });
-    }
+  function fmtD(v){
+    if(v>=1000000) return '$'+(v/1000000).toFixed(2)+'M';
+    return '$'+(v/1000).toFixed(0)+'K';
   }
-
-  sliderB.addEventListener('input', calcUpdate);
-  sliderM.addEventListener('input', calcUpdate);
-  calcUpdate();
+  window.updateROI = function(){
+    var ap  = parseInt(document.getElementById('ap-slider').value);
+    var sam = parseInt(document.getElementById('sam-slider').value);
+    var cop = parseInt(document.getElementById('cop-slider').value);
+    document.getElementById('ap-disp').textContent  = fmtM(ap);
+    document.getElementById('sam-disp').textContent = fmtM(sam);
+    document.getElementById('cop-disp').textContent = fmtM(cop);
+    var apSave  = ap  * 0.175;
+    var samSave = sam * 0.265;
+    var copSave = cop * 0.11;
+    var samRec  = sam * 0.15;
+    var total   = apSave + samSave + copSave;
+    var pct     = Math.round((total / (ap + sam + cop)) * 100);
+    document.getElementById('roi-sam-recovery').textContent = fmtD(samRec);
+    document.getElementById('roi-ap-save').textContent      = fmtD(apSave);
+    document.getElementById('roi-sam-save').textContent     = fmtD(samSave);
+    document.getElementById('roi-cop-save').textContent     = fmtD(copSave);
+    document.getElementById('roi-total-v').textContent      = fmtD(total);
+    document.getElementById('roi-savings-pct').textContent  = pct + '%';
+    document.getElementById('roi-mo-v').textContent         = '+' + fmtD(total/12) + '/mo';
+  };
+  updateROI();
 })();
 
 history.scrollRestoration = 'manual';
@@ -3214,34 +3800,23 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 // NAV TOGGLE
 (function() {
-  var btn = document.getElementById('nav-ham');
-  var drawer = document.getElementById('nav-drawer');
-  var overlay = document.getElementById('nav-overlay');
+  var btn = document.getElementById('nav-toggle');
+  var nav = document.querySelector('nav');
   var body = document.body;
-  if (!btn || !drawer || !overlay) return;
   function openNav() {
+    nav.classList.add('nav-visible');
     btn.classList.add('open');
-    drawer.classList.add('open');
-    overlay.classList.add('open');
     body.classList.add('nav-open');
-    btn.setAttribute('aria-expanded', 'true');
   }
   function closeNav() {
+    nav.classList.remove('nav-visible');
     btn.classList.remove('open');
-    drawer.classList.remove('open');
-    overlay.classList.remove('open');
     body.classList.remove('nav-open');
-    btn.setAttribute('aria-expanded', 'false');
   }
-  function toggleNav() {
-    if (drawer.classList.contains('open')) closeNav();
-    else openNav();
-  }
-  btn.addEventListener('click', toggleNav);
-  overlay.addEventListener('click', closeNav);
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeNav();
+  btn.addEventListener('click', function() {
+    if (nav.classList.contains('nav-visible')) { closeNav(); } else { openNav(); }
   });
+  // Close nav when a nav link is clicked (keeps flow clean during presentation)
   document.querySelectorAll('.nav-a').forEach(function(a) {
     a.addEventListener('click', function() { closeNav(); });
   });
@@ -3262,10 +3837,8 @@ window.addEventListener('scroll', () => {
     sections.forEach(function(s) {
       if (s.el.offsetTop <= scrollY) current = s;
     });
-    var currentHref = current ? ('#' + current.el.id) : '';
-    navLinks.forEach(function(a) {
-      a.classList.toggle('active', a.getAttribute('href') === currentHref);
-    });
+    navLinks.forEach(function(a) { a.classList.remove('active'); });
+    if (current) current.a.classList.add('active');
   }
   window.addEventListener('scroll', setActive, { passive: true });
   setActive();
